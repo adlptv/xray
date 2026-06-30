@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ScanResult {
+  id             String   @id @default(cuid())
+  fileName       String
+  fileSize       Int
+  extensionId    String?
+  extensionName  String?
+  version        String?
+  manifestVersion Int?
+  overallGrade   String
+  overview       String   // JSON string
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  permissions    Permission[]
+  networkCalls   NetworkCall[]
+  contentScripts ContentScript[]
+  files          ScannedFile[]
+  vulnerabilities Vulnerability[]
+  scanMetadata   ScanMetadata?
+}
+
+model Permission {
+  id           String     @id @default(cuid())
+  scanResultId String
+  name         String
+  description  String
+  riskLevel    String
+  grade        String
+  warnings     String     // JSON array
+  scanResult   ScanResult @relation(fields: [scanResultId], references: [id], onDelete: Cascade)
+}
+
+model NetworkCall {
+  id           String     @id @default(cuid())
+  scanResultId String
+  url          String
+  method       String
+  domain       String
+  risk         String
+  flags        String     // JSON array
+  scanResult   ScanResult @relation(fields: [scanResultId], references: [id], onDelete: Cascade)
+}
+
+model ContentScript {
+  id           String     @id @default(cuid())
+  scanResultId String
+  matches      String     // JSON array of URL patterns
+  fileName     String
+  riskFlags    String     // JSON array
+  scanResult   ScanResult @relation(fields: [scanResultId], references: [id], onDelete: Cascade)
+}
+
+model ScannedFile {
+  id           String     @id @default(cuid())
+  scanResultId String
+  path         String
+  fileType     String
+  size         Int
+  suspicious   Boolean    @default(false)
+  scanResult   ScanResult @relation(fields: [scanResultId], references: [id], onDelete: Cascade)
+}
+
+model Vulnerability {
+  id           String     @id @default(cuid())
+  scanResultId String
+  severity     String
+  category     String
+  description  String
+  filePath     String?
+  lineNumber   Int?
+  remediation  String
+  cweId        String?
+  scanResult   ScanResult @relation(fields: [scanResultId], references: [id], onDelete: Cascade)
+}
+
+model ScanMetadata {
+  id           String     @id @default(cuid())
+  scanResultId String     @unique
+  scanDuration Int
+  totalFiles   Int
+  totalSize    Int
+  engine       String     @default("xray/v1")
+  scanResult   ScanResult @relation(fields: [scanResultId], references: [id], onDelete: Cascade)
+}
+
+model Comparison {
+  id           String   @id @default(cuid())
+  scanIdA      String
+  scanIdB      String
+  result       String   // JSON
+  createdAt    DateTime @default(now())
+}
+
+model OrgPolicy {
+  id             String   @id @default(cuid())
+  name           String
+  description    String
+  blockedPermissions String // JSON array
+  minGrade       String   @default("C")
+  notifyOnFail   Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
