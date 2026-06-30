@@ -8,9 +8,9 @@ Upload a browser extension (CRX or ZIP) and get a security report. Analyzes perm
 
 ## Screenshots
 
-| Security Report Card — Grade D | Permission Risk and Exfiltration Detail |
+| Landing Page (Report Card) | Detail View (Risk Analysis) |
 |:---:|:---:|
-| ![Security Report Card — Grade D](screenshots/hero.png) | ![Permission Risk and Exfiltration Detail](screenshots/dashboard.png) |
+| ![Detail view: permission audit, network call analysis, and exfiltration pattern matches](screenshots/dashboard.png) |
 
 ## Features
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>XRay</title><style>
+      body{font-family:system-ui,sans-serif;background:#0a0a0f;color:#e2e8f0;margin:0}
+      .nav{padding:16px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1c1016;background:rgba(0,0,0,.9)}
+      .logo{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+      .logo span{color:#f87171}
+      .hero{padding:60px 32px;max-width:1100px;margin:0 auto}
+      .hero h1{font-size:42px;font-weight:800;margin:0 0 16px;line-height:1.2;color:#f8fafc}
+      .hero h1 span{color:#f87171}
+      .hero p{font-size:15px;color:#94a3b8;max-width:540px;line-height:1.6;margin:0 0 24px}
+      .btn{display:inline-flex;padding:12px 28px;border-radius:8px;background:linear-gradient(135deg,#dc2626,#ea580c);color:#fff;font-weight:600;text-decoration:none}
+      .report{margin-top:40px;display:flex;gap:24px;align-items:flex-start}
+      .grade-card{background:#0d0d14;border:1px solid #1c1016;border-radius:16px;padding:32px;text-align:center;min-width:160px}
+      .grade-letter{font-size:72px;font-weight:900;line-height:1}
+      .grade-a{color:#22c55e}.grade-b{color:#84cc16}.grade-f{color:#ef4444}
+      .grade-label{font-size:13px;color:#64748b;margin-top:8px}
+      .report-grid{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+      .report-item{padding:14px;background:#0d0d14;border:1px solid #1c1016;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+      .report-item .label{font-size:13px;color:#94a3b8}
+      .report-item .score{font-size:20px;font-weight:800}
+      .score-safe{color:#22c55e}.score-warn{color:#eab308}.score-danger{color:#ef4444}
+      .risk-list{margin-top:24px;background:#0d0d14;border:1px solid #1c1016;border-radius:12px;overflow:hidden}
+      .risk-hdr{padding:12px 16px;background:#12121a;border-bottom:1px solid #1c1016;font-size:12px;font-weight:700;color:#f87171}
+      .risk-row{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(28,16,22,.5);font-size:12px}
+      .risk-row .sev{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
+      .sev-critical{background:rgba(239,68,68,.15);color:#fca5a5}.sev-high{background:rgba(245,158,11,.15);color:#fcd34d}.sev-medium{background:rgba(59,130,246,.12);color:#93c5fd}
+      .features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;padding:60px 32px}
+      .fcard{padding:24px;background:#0d0d14;border:1px solid #1c1016;border-radius:10px}
+      .fcard h3{font-size:15px;color:#f8fafc;margin:0 0 6px}.fcard p{font-size:13px;color:#64748b;margin:0}
+    
+.hero h1, .hero p, .btn { display: none !important; } .hero { padding: 10px 32px !important; } .features { display: none !important; } .nav { position: relative; }
+</style></head><body>
+      <nav class="nav"><div class="logo">🕵️ <span>XRay</span></div><div style="font-size:13px;color:#64748b">Extension Security Analyzer</div></nav>
+      <section class="hero">
+        <h1>Know What Your <span>Extensions</span> Do.<br>Before <span>They</span> Do It.</h1>
+        <p>Upload any browser extension — get a comprehensive security report. Permission abuse analysis, network exfiltration detection, content script audit, and A-F grading.</p>
+        <a href="#" class="btn">Analyze Extension →</a>
+        <div class="report">
+          <div class="grade-card"><div class="grade-letter grade-f">D</div><div class="grade-label">Security Score · 42/100</div></div>
+          <div class="report-grid">
+            <div class="report-item"><div class="label">Permissions Risk</div><div class="score score-danger">18/40</div></div>
+            <div class="report-item"><div class="label">Network Safety</div><div class="score score-warn">12/20</div></div>
+            <div class="report-item"><div class="label">Content Scripts</div><div class="score score-danger">5/15</div></div>
+            <div class="report-item"><div class="label">Data Exfiltration</div><div class="score score-danger">3/15</div></div>
+            <div class="report-item"><div class="label">Manifest v3 Ready</div><div class="score score-safe">8/10</div></div>
+            <div class="report-item"><div class="label">Overall Grade</div><div class="score score-danger">D (42)</div></div>
+          </div>
+        </div>
+        <div class="risk-list">
+          <div class="risk-hdr">⚠️ Detected Risks (7 issues)</div>
+          <div class="risk-row"><div>Reads clipboard data via document.execCommand</div><div class="sev sev-critical">CRITICAL</div></div>
+          <div class="risk-row"><div>Sends localStorage to external domain api.metrics.com</div><div class="sev sev-critical">CRITICAL</div></div>
+          <div class="risk-row"><div>Injects content script on all HTTPS pages</div><div class="sev sev-high">HIGH</div></div>
+          <div class="risk-row"><div>Uses deprecated manifest v2 webRequestBlocking</div><div class="sev sev-high">HIGH</div></div>
+          <div class="risk-row"><div>Requests "tabs" permission (can read all URLs)</div><div class="sev sev-medium">MEDIUM</div></div>
+        </div>
+      </section>
+      <div class="features">
+        <div class="fcard"><h3>📤 Upload & Analyze</h3><p>Drag-drop CRX/ZIP or paste Chrome Web Store URL. Sandboxed analysis — no code execution.</p></div>
+        <div class="fcard"><h3>🅰️ A-F Report Card</h3><p>Five-dimensional scoring with weighted breakdown. Visual report card with grade color coding.</p></div>
+        <div class="fcard"><h3>🔐 Permission Audit</h3><p>40+ permissions with individual risk scoring and chain-of-abuse detection patterns.</p></div>
+        <div class="fcard"><h3>🌐 Network Analysis</h3><p>All fetch/XHR destinations analyzed. Flag data exfiltration to unknown domains.</p></div>
+        <div class="fcard"><h3>🕵️ 18 Exfil Patterns</h3><p>Clipboard, keylogging, fingerprinting, localStorage→fetch, cookie access, form data capture.</p></div>
+        <div class="fcard"><h3>📋 v2→v3 Migration</h3><p>Manifest compatibility check with specific upgrade recommendations and blocking issues.</p></div>
+      </div>
+    </body></html>
