@@ -91,9 +91,9 @@ Side-by-side comparison of two scan results:
 ##
 ## 📸 Screenshots
 
-| Landing Page | Dashboard |
+| Security Report Card — Grade D | Permission Risk & Exfiltration Detail |
 |:---:|:---:|
-| ![Xray Hero](screenshots/hero.png) | ![Xray Dashboard](screenshots/dashboard.png) |
+| ![Permission Risk & Exfiltration Detail](screenshots/dashboard.png) |
 
 > 💡 *Run locally to see the full interactive experience: `pnpm dev` then open http://localhost:3000*
 
