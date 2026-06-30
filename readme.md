@@ -88,7 +88,16 @@ Side-by-side comparison of two scan results:
 - Network call counts and domains
 - File size comparison
 
-## Tech Stack
+##
+## 📸 Screenshots
+
+| Landing Page | Dashboard |
+|:---:|:---:|
+| ![Xray Hero](screenshots/hero.png) | ![Xray Dashboard](screenshots/dashboard.png) |
+
+> 💡 *Run locally to see the full interactive experience: `pnpm dev` then open http://localhost:3000*
+
+ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
